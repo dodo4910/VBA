@@ -1,0 +1,5 @@
+# 開啟視窗畫面
+Sub 新增資料()
+    Application.ScreenUpdating = True #先停止畫面更新，以免視窗在操作時耗費太多資源在畫面的運算
+    Data_Input.Show # Data_Input 是視窗的原件
+End Sub
