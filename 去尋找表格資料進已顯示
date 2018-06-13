@@ -1,0 +1,19 @@
+Private Sub FixItemInput_AfterUpdate() '維修部位輸入
+    Application.ScreenUpdating = False
+    With Sheets(TorchTypeInput.Value)
+        .Select
+        Dim CellValue
+        Set CellValue = .Range("C2:Z2").Find(FixItemInput.Value, LookIn:=xlValues)
+        If Not CellValue Is Nothing Then
+            Dim Startpoint, Endpoint
+            .Cells(CellValue.Row + 1, CellValue.Column).Select
+            Startpoint = .Cells(CellValue.Row + 1, CellValue.Column).Address(RowAbsolute:=False, ColumnAbsolute:=False)
+            Selection.End(xlDown).Select
+            Endpoint = .Cells(ActiveCell.Row, ActiveCell.Column).Address(RowAbsolute:=False, ColumnAbsolute:=False)
+            CommentInput.RowSource = TorchTypeInput.Value & "!" & Startpoint & ":" & Endpoint
+            CommentInform.Visible = True
+        End If
+    End With
+    Sheets("主選單").Select
+    Application.ScreenUpdating = True
+End Sub
