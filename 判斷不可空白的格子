@@ -1,0 +1,28 @@
+Function CheckInput() As Boolean
+    '檢查員工編號
+    If Me.EmployeeNumber.Text = "" Then
+        MsgBox ("員工編號不可空白")
+        CheckInput = False
+        Exit Function
+    End If
+    '檢查維修種類
+    If Me.TorchTypeInput.Text = "" Then
+        MsgBox ("銲槍種類不可空白")
+        CheckInput = False
+        Exit Function
+    End If
+    '檢查維修部位
+    If Me.FixItemInput.Text = "" Then
+        MsgBox ("維修部位不可空白")
+        CheckInput = False
+        Exit Function
+    End If
+    
+    If Me.OptionButton1.Value + Me.OptionButton2.Value + Me.OptionButton3.Value = 0 Then
+        MsgBox ("維修項目不可空白")
+        CheckInput = False
+        Exit Function
+    End If
+    
+    CheckInput = True
+End Function
