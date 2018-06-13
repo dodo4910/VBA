@@ -1,0 +1,36 @@
+# 裡工工號轉換
+Function 裡工工號轉換(Input_Text As String) As String
+    'Data_Input.EmployeeNumber.Value
+    Dim Spec As Integer
+    Dim EmNum As String
+    If Right(Input_Text, 1) = "N" And Len(Input_Text) > 6 Then
+        Spec = (Int(Left(Input_Text, 1)) + Int(Mid(Input_Text, 3, 1)) + Int(Mid(Input_Text, 4, 1)) + Int(Mid(Input_Text, 5, 1)) + Int(Mid(Input_Text, 6, 1)) + Int(Mid(Input_Text, 7, 1))) Mod 10
+        Select Case Spec
+            Case 0
+                EmNum = Mid(Input_Text, 7, 1) + Mid(Input_Text, 4, 1) + Mid(Input_Text, 3, 1) + Mid(Input_Text, 5, 1) + Mid(Input_Text, 1, 1) + Mid(Input_Text, 6, 1)
+            Case 1
+                EmNum = Mid(Input_Text, 6, 1) + Mid(Input_Text, 1, 1) + Mid(Input_Text, 5, 1) + Mid(Input_Text, 4, 1) + Mid(Input_Text, 7, 1) + Mid(Input_Text, 3, 1)
+            Case 2
+                EmNum = Mid(Input_Text, 4, 1) + Mid(Input_Text, 6, 1) + Mid(Input_Text, 3, 1) + Mid(Input_Text, 1, 1) + Mid(Input_Text, 7, 1) + Mid(Input_Text, 5, 1)
+            Case 3
+                EmNum = Mid(Input_Text, 3, 1) + Mid(Input_Text, 1, 1) + Mid(Input_Text, 4, 1) + Mid(Input_Text, 7, 1) + Mid(Input_Text, 5, 1) + Mid(Input_Text, 6, 1)
+            Case 4
+                EmNum = Mid(Input_Text, 5, 1) + Mid(Input_Text, 4, 1) + Mid(Input_Text, 1, 1) + Mid(Input_Text, 3, 1) + Mid(Input_Text, 6, 1) + Mid(Input_Text, 7, 1)
+            Case 5
+                EmNum = Mid(Input_Text, 6, 1) + Mid(Input_Text, 4, 1) + Mid(Input_Text, 3, 1) + Mid(Input_Text, 1, 1) + Mid(Input_Text, 7, 1) + Mid(Input_Text, 5, 1)
+            Case 6
+                EmNum = Mid(Input_Text, 4, 1) + Mid(Input_Text, 1, 1) + Mid(Input_Text, 7, 1) + Mid(Input_Text, 5, 1) + Mid(Input_Text, 3, 1) + Mid(Input_Text, 6, 1)
+            Case 7
+                EmNum = Mid(Input_Text, 1, 1) + Mid(Input_Text, 7, 1) + Mid(Input_Text, 5, 1) + Mid(Input_Text, 3, 1) + Mid(Input_Text, 6, 1) + Mid(Input_Text, 4, 1)
+            Case 8
+                EmNum = Mid(Input_Text, 3, 1) + Mid(Input_Text, 6, 1) + Mid(Input_Text, 1, 1) + Mid(Input_Text, 7, 1) + Mid(Input_Text, 5, 1) + Mid(Input_Text, 4, 1)
+            Case 9
+               EmNum = Mid(Input_Text, 5, 1) + Mid(Input_Text, 7, 1) + Mid(Input_Text, 6, 1) + Mid(Input_Text, 4, 1) + Mid(Input_Text, 1, 1) + Mid(Input_Text, 3, 1)
+        End Select
+        裡工工號轉換 = EmNum
+    Else
+        裡工工號轉換 = "查無此人"
+    End If
+    
+    
+End Function
