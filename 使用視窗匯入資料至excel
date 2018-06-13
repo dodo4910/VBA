@@ -1,0 +1,35 @@
+Private Sub AddNewItem_Click() '點擊增加一筆新資料 (同一筆資料)
+    '檢查
+    If CheckInput = False Then Exit Sub
+    With Sheets("資料庫")
+        Dim i As Long
+        i = .Cells(.Rows.Count, 1).End(xlUp).Row + 1
+        '填入資料
+        .Cells(i, 1) = i - 1
+        .Cells(i, 2) = Date
+        .Cells(i, 3) = Time
+        .Cells(i, 4) = Me.EmployeeNumber.Text
+        .Cells(i, 5) = Me.TorchTypeInput.Text
+        .Cells(i, 6) = Me.TorchTypeDetail.Text
+        .Cells(i, 7) = Me.FixItemInput.Text
+        .Cells(i, 8) = Me.CommentInput.Text
+        .Cells(i, 10) = "Y" '是不是同一筆資料
+        Select Case True
+            Case Me.OptionButton1.Value
+                .Cells(i, 9) = "維修"
+            Case Me.OptionButton2.Value
+                .Cells(i, 9) = "更換新品"
+            Case Me.OptionButton3.Value
+                .Cells(i, 9) = "更換舊品"
+        End Select
+        '清空後三格表格
+        Me.FixItemInput.Value = ""
+        Me.CommentInput.Value = ""
+        Me.OptionButton1.Value = False #清空表格
+        Me.OptionButton2.Value = False
+        Me.OptionButton3.Value = False
+        CommentInform.Visible = False
+        EmployLabel.Caption = ""
+    End With
+    ThisWorkbook.Save
+End Sub
